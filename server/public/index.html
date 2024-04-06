@@ -11,13 +11,13 @@
 
     <form data-testid="calculator">
       <input data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
+      <button onclick="calcAdd(event)">+</button>
+      <button onclick="calcSubtract(event)">-</button>
+      <button onclick="calcMultiply(event)">*</button>
+      <button onclick="calcDivide(event)">/</button>
       <input data-testid="numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+      <button onclick="calcEquals(event)">=</button>
+      <button onclick="calcClear(event)">C</button>
     </form>
 
     <section data-testid="recentResult">
