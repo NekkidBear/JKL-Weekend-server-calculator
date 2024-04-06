@@ -99,7 +99,7 @@ function calcClear(event) {
   console.log("inputs are clear");
 }
 
-/** this function will fetch the new data */
+/** this function will fetch the new data and trigger a DOM refresh*/
 function fetchCalcs() {
   console.log("fetching data");
   // GET request
@@ -113,4 +113,6 @@ function fetchCalcs() {
   });
   renderDOM(calculations);
 }
+
+//on initial load
 window.onload = fetchCalcs();
