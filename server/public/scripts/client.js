@@ -14,7 +14,8 @@ let calculations = [];
 // }
 
 /** this function will render the updated data in the DOM */
-function renderDOM(calculations) {
+function renderDOM() {
+   calculations = fetchCalcs();
   console.log("in renderDOM");
   console.log(calculations);
   //display the result of the current function
@@ -114,4 +115,4 @@ function fetchCalcs() {
 }
 
 //on initial load
-window.onload = fetchCalcs();
+window.onload = renderDOM();
