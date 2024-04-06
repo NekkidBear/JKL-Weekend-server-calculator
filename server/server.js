@@ -47,7 +47,7 @@ function calculate(calc){
   let numOne = Number(calc.numOne); //store the first number
   let numTwo = Number(calc.numTwo); //store the second number
   let operator = calc.operator; //store the operator
-  let result = ""; //initialize result
+  let result = 0; //initialize result
 
   switch (operator){
     case '+':
