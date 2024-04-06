@@ -34,6 +34,7 @@ let calculations = [
 app.get('/calculations', (req,res) => {
   console.log("get /calculations received the request");
   console.log(calculations);
+  res.json(calculations);
   res.send(calculations);
 })
 

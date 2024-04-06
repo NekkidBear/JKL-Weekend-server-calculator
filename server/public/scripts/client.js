@@ -16,7 +16,7 @@ let calculations = [];
 /** this function will render the updated data in the DOM */
 function renderDOM() {
   console.log("in renderDOM");
-  calculations = fetchCalcs(); //fetch incoming data and store it in calculations
+  calculations.push(fetchCalcs()); //fetch incoming data and store it in calculations
   console.log(calculations);
   //display the result of the current function
   let recentResultLocation = document.getElementById("recentResult");
@@ -112,7 +112,7 @@ function fetchCalcs() {
     url: "/calculations",
   }).then((res) => {
     let calculations = res.calculations;
-    console.log(res);
+    console.log(res.data);
     console.log(calculations);
     return calculations;
   });
