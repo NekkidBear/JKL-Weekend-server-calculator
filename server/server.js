@@ -43,6 +43,7 @@ app.post('/calculations', (req, res) => {
   console.log(req.body)
   calculate(calc); //function to calculate the result from the posted inputs
   calculations.push(calc);
+  console.log(calculations)
   res.sendStatus(201)
 })
 

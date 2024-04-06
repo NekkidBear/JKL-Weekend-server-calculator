@@ -15,7 +15,6 @@ let calculations = [];
 
 /** this function will render the updated data in the DOM */
 function renderDOM() {
-  calculations = fetchCalcs();
   console.log("in renderDOM");
 //   console.log(calculations);
   //display the result of the current function
@@ -24,6 +23,7 @@ function renderDOM() {
   //display the history of the calculations
   let calcHistoryULlocation = document.getElementById("calcHistoryUL");
   for (let calc of calculations) {
+    console.log(calc);
     calcHistoryULlocation += `
         <li>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}</li>`;
   }
