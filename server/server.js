@@ -10,7 +10,7 @@ app.use(express.static('server/public'));
 let calculations = [
   {
     numOne: 4, 
-    num2: 10, 
+    numTwo: 10, 
     operator: "+", 
     result: 14},
   {
