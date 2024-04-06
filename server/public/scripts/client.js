@@ -6,13 +6,15 @@ let numTwo = "";
 
 /** this function triggers on intial page load to get the initial data fromt the server */
 function onReady() {
+  console.log("in onReady()");
   fetchCalcs();
-  console.log(numOne, numTwo, operator)
-  //renderDOM(calculations);
+  console.log(numOne, numTwo, operator);
+  renderDOM(calculations);
 }
 
 /** this function will render the updated data in the DOM */
 function renderDOM(calculations) {
+  console.log("in renderDOM");
   //display the result of the current function
   let recentResultLocation = document.getElementById("recentResult");
   recentResultLocation.textContent = calculations.at(-1).result;
@@ -31,25 +33,29 @@ function renderDOM(calculations) {
 
 /** this function sets the calculation operator to '+' */
 function calcAdd(event) {
-    event.preventDefault()
+  event.preventDefault();
+  console.log("add")
   operator = "+";
 }
 
 /** this function sets the calculation operator to '-' */
 function calcSubtract(event) {
-    event.preventDefault()
+  event.preventDefault();
+  console.log("subtract")
   operator = "-";
 }
 
 /** this function sets the calculation operator to '*' */
 function calcMultiply(event) {
-    event.preventDefault()
+  event.preventDefault();
+  console.log("multiply")
   operator = "*";
 }
 
 /** this function sets the calculation operator to '*' */
 function calcDivide(event) {
-    event.preventDefault()
+  event.preventDefault();
+  console.log("divide")
   operator = "/";
 }
 
@@ -58,13 +64,18 @@ function calcDivide(event) {
 //****************************** */
 /** this function generates the POST request to trigger the calculations on the server  */
 function calcEquals(event) {
-    event.preventDefault()
+    console.log("equals")
+  event.preventDefault();
   //create data object
   numOne = document.getElementById("numOne").value;
+  console.log('numOne is', numOne)
   numTwo = document.getElementById("numTwo").value;
+  console.log('numTwo is', numTwo);
   //operator is set by the calc buttons
+  console.log('operator is', operator);
 
   // send post request with calculation to perform
+  console.log("Sending POST to server")
   axios({
     method: "POST",
     url: "/calculations",
@@ -74,17 +85,21 @@ function calcEquals(event) {
 
 /** this function clears the inputs '+' */
 function calcClear(event) {
-    event.preventDefault()
-    numOne = document.getElementById("numOne").value;
-    numTwo = document.getElementById("numTwo").value;
+  event.preventDefault();
+  console.log("clearing inputs");
+  numOne = document.getElementById("numOne").value;
+  numTwo = document.getElementById("numTwo").value;
 
-    numOne = '';
-    numTwo = '';
-    operator = '';
+  numOne = "";
+  numTwo = "";
+  operator = "";
+
+  console.log( 'inputs are clear');
 }
 
 /** this function will fetch the new data */
 function fetchCalcs() {
+    console.log("fetching data")
   // GET request
   axios({
     method: "GET",
