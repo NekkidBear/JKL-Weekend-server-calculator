@@ -7,7 +7,8 @@ let numTwo = "";
 /** this function triggers on intial page load to get the initial data fromt the server */
 function onReady() {
   fetchCalcs();
-  renderDOM(calculations);
+  console.log(numOne, numTwo, operator)
+  //renderDOM(calculations);
 }
 
 /** this function will render the updated data in the DOM */

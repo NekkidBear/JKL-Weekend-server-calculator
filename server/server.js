@@ -28,7 +28,7 @@ function calculate(calc){
   let numOne = Number(calc.numOne); //store the first number
   let numTwo = Number(calc.numTwo); //store the second number
   let operator = calc.operator; //store the operator
-  let result = NaN; //initialize result
+  let result = ""; //initialize result
 
   switch (operator){
     case '+':
