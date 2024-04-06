@@ -5,33 +5,32 @@ let numOne = "";
 let numTwo = "";
 let calculations = [];
 
-/** this function triggers on intial page load to get the initial data fromt the server */
-// function onLoad(){
-//   console.log("in onLoad()");
-//   calculations = fetchCalcs();
-//   console.log(calculations.at(-1).numOne, calculations.at(-1).numTwo, calculations.at(-1).operator);
-//   renderDOM(calculations);
-// }
-
 /** this function will render the updated data in the DOM */
 async function renderDOM() {
   console.log("in renderDOM");
   await fetchCalcs(); //fetch incoming data and store it in calculations array
   console.log(calculations);
+
   //display the result of the current function
-  let recentResultLocation = document.getElementById("recentResult");
-  if (calculations.length >0){
-  console.log(calculations[calculations.length - 1].result);
-  recentResultLocation.innerText =
-    calculations[calculations.length - 1].result;
+  let recentResultLocation = document.getElementById("recentResult"); //create reference to the DOM element
+
+  if (calculations.length > 0 && recentResultLocation) {
+    console.log(calculations[calculations.length - 1].result);
+    recentResultLocation.innerText =
+      calculations[calculations.length - 1].result;
   }
+
   //display the history of the calculations
   let calcHistoryULlocation = document.getElementById("calcHistoryUL");
+  let calcHistoryHTML = ""; //initialize the string
   for (let calc of calculations) {
     console.log(calc);
-    calcHistoryULlocation.innerHTML = "";
-    calcHistoryULlocation += `
+
+    calcHistoryHTML += `
         <li>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}</li>`;
+  }
+  if (calcHistoryULlocation) {
+    calcHistoryULlocation.innerHTML = calcHistoryHTML;
   }
   //clear the inputs for another calculation
   calcClear();
@@ -89,18 +88,22 @@ function calcEquals(event) {
     method: "POST",
     url: "/calculations",
     data: { numOne: numOne, numTwo: numTwo, operator: operator },
+  }).then((res) => {
+    renderDOM();
   });
 }
 
 /** this function clears the inputs '+' */
 function calcClear(event) {
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+  }
   console.log("clearing inputs");
-  numOne = document.getElementById("numOne").value;
-  numTwo = document.getElementById("numTwo").value;
+  numOneinput = document.getElementById("numOne");
+  numTwoinput= document.getElementById("numTwo");
 
-  numOne = "";
-  numTwo = "";
+  numOne.value = "";
+  numTwo.value = "";
   operator = "";
 
   console.log("inputs are clear");
@@ -113,13 +116,15 @@ async function fetchCalcs() {
   await axios({
     method: "GET",
     url: "/calculations",
-  }).then((res) => {
-    calculations = res.data;//update the calculations array with the incoming data
-    console.log(res.data);
-    console.log(calculations);
-  }).catch((error) => {
-    console.log("Error fetching data", error);
-  });
+  })
+    .then((res) => {
+      calculations = res.data; //update the calculations array with the incoming data
+      console.log(res.data);
+      console.log(calculations);
+    })
+    .catch((error) => {
+      console.log("Error fetching data", error);
+    });
 }
 
 //on initial load
