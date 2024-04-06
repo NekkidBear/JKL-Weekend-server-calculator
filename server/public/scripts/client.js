@@ -15,7 +15,7 @@ let calculations = [];
 
 /** this function will render the updated data in the DOM */
 function renderDOM() {
-   calculations = fetchCalcs();
+  calculations = fetchCalcs();
   console.log("in renderDOM");
   console.log(calculations);
   //display the result of the current function
@@ -109,7 +109,7 @@ function fetchCalcs() {
     url: "/calculations",
   }).then((res) => {
     let calculations = res.calculations;
-    console.log(calculations)
+    console.log(calculations);
     return calculations;
   });
 }
