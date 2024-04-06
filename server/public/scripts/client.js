@@ -14,19 +14,22 @@ let calculations = [];
 // }
 
 /** this function will render the updated data in the DOM */
-function renderDOM() {
+async function renderDOM() {
   console.log("in renderDOM");
-  calculations.push(fetchCalcs()); //fetch incoming data and store it in calculations
+  await fetchCalcs(); //fetch incoming data and store it in calculations array
   console.log(calculations);
   //display the result of the current function
   let recentResultLocation = document.getElementById("recentResult");
+  if (calculations.length >0){
   console.log(calculations[calculations.length - 1].result);
   recentResultLocation.innerText =
     calculations[calculations.length - 1].result;
+  }
   //display the history of the calculations
   let calcHistoryULlocation = document.getElementById("calcHistoryUL");
   for (let calc of calculations) {
     console.log(calc);
+    calcHistoryULlocation.innerHTML = "";
     calcHistoryULlocation += `
         <li>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}</li>`;
   }
@@ -104,33 +107,20 @@ function calcClear(event) {
 }
 
 /** this function will fetch the new data and trigger a DOM refresh*/
-// function fetchCalcs() {
-//   console.log("fetching data");
-//   // GET request
-//   axios({
-//     method: "GET",
-//     url: "/calculations",
-//   }).then((res) => {
-//     let calculations = res.calculations;
-//     console.log(res.data);
-//     console.log(calculations);
-//     return calculations;
-//   });
-// }
-
 async function fetchCalcs() {
-    try {
-      const response = await fetch('/calculations');
-      if (response.ok) {
-        const data = await response.json();
-        calculations = data; // Assign the fetched data directly to the calculations variable
-      } else {
-        console.error('Error fetching calculations:', response.status);
-      }
-    } catch (error) {
-      console.error('Error fetching calculations:', error);
-    }
-  }
+  console.log("fetching data");
+  // GET request
+  await axios({
+    method: "GET",
+    url: "/calculations",
+  }).then((res) => {
+    calculations = res.data;//update the calculations array with the incoming data
+    console.log(res.data);
+    console.log(calculations);
+  }).catch((error) => {
+    console.log("Error fetching data", error);
+  });
+}
 
 //on initial load
 window.onload = renderDOM();
