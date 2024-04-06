@@ -90,6 +90,7 @@ function calcEquals(event) {
     data: { numOne: numOne, numTwo: numTwo, operator: operator },
   }).then((res) => {
     renderDOM();
+    calcClear();
   });
 }
 
@@ -99,11 +100,14 @@ function calcClear(event) {
     event.preventDefault();
   }
   console.log("clearing inputs");
-  numOneinput = document.getElementById("numOne");
-  numTwoinput= document.getElementById("numTwo");
 
-  numOne.value = "";
-  numTwo.value = "";
+  //selecting the inputs in the DOM
+  let numOneinput = document.getElementById("numOne");
+  let numTwoinput= document.getElementById("numTwo");
+
+  //clearing the inputs
+  numOneinput.value = "";
+  numTwoinput.value = "";
   operator = "";
 
   console.log("inputs are clear");
