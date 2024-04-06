@@ -9,7 +9,7 @@ Weekend Server-Side calculator app
 
 ## Description
 
-Duration: weekend of 4/6
+Duration: weekend of 4/6/2024
 
 This is a simple web-based calculator app supporting addition, subtraction, multiplication and division. It takes two inputs (numOne and numTwo) and returns the result of the selected operation. 
 
