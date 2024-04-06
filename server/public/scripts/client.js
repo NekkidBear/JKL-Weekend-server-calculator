@@ -17,7 +17,7 @@ let calculations = [];
 function renderDOM() {
   calculations = fetchCalcs();
   console.log("in renderDOM");
-  console.log(calculations);
+//   console.log(calculations);
   //display the result of the current function
   let recentResultLocation = document.getElementById("recentResult");
   recentResultLocation.textContent = calculations.at(-1).result;
