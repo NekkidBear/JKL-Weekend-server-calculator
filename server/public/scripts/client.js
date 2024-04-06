@@ -109,5 +109,4 @@ function fetchCalcs() {
     return calculations;
   });
 }
-
-onReady();
+window.onload = fetchCalcs()
