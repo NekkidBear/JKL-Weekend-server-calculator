@@ -102,8 +102,8 @@ function calcClear(event) {
   console.log("clearing inputs");
 
   //selecting the inputs in the DOM
-  numOneinput = document.getElementById("numOne");
-  numTwoinput= document.getElementById("numTwo");
+  numOneInput = document.getElementById("numOne");
+  numTwoInput= document.getElementById("numTwo");
 
   //clearing the inputs
   numOneInput.value = "";
