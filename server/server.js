@@ -39,6 +39,7 @@ app.get('/calculations', (req,res) => {
 app.post('/calculations', (req, res) => {
   let calc = res.body;
   calculate(calc); //function to calculate the result from the posted inputs
+  calculations.push(calc);
   res.sendStatus(201)
 })
 
@@ -63,7 +64,7 @@ function calculate(calc){
       break;
   }
   calc.result = result; // add the result property into the calculation object
-  calculations.push(calc); 
+  return calc
   
 }
 
