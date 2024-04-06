@@ -3,8 +3,17 @@ console.log('client.js is sourced!');
 let operator = '';
 
 /** this function will render the updated data in the DOM */
-function renderDOM(){
-    //todo
+function renderDOM(calculations){
+    //display the result of the current function
+    let recentResultLocation = document.getElementById("recentResult")
+    recentResultLocation.textContent = calculations.at(-1).result;
+    //display the history of the calculations
+    let calcHistoryULlocation = document.getElementById("calcHistoryUL");
+    for (let calc of calculations){
+        calcHistoryULlocation += `
+        <li>${calc}</li>`;
+    }
+    //clear the inputs for another calculation
 }
 //****************************** *//
 //Operation buttons
@@ -46,5 +55,4 @@ function calcClear(event){
 /** this function will fetch the new data */
 function fetchCalcs(){
     //todo GET request
-
-
+}

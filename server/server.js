@@ -21,7 +21,7 @@ app.get('/calculations', (req,res) => {
 app.post('/calculations', (req, res) => {
   let calc = res.body;
   calculate(calc); //function to calculate the result from the posted inputs
-  res.sendStatus(202)
+  res.sendStatus(201)
 })
 
 function calculate(calc){
