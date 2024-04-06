@@ -109,4 +109,4 @@ function fetchCalcs() {
     return calculations;
   });
 }
-window.onload = renderDOM()
+window.onload = onReady()
