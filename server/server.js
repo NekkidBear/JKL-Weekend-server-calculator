@@ -13,9 +13,41 @@ let calculations = []
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+app.get('/calculations', (req,res) => {
+  res.send(calculations);
+})
 
 // POST /calculations
+app.post('/calculations', (req, res) => {
+  let calc = res.body;
+  calculate(calc); //function to calculate the result from the posted inputs
+  res.sendStatus(202)
+})
 
+function calculate(calc){
+  let numOne = Number(calc.numOne); //store the first number
+  let numTwo = Number(calc.numTwo); //store the second number
+  let operator = calc.operator; //store the operator
+  let result = NaN; //initialize result
+
+  switch (operator){
+    case '+':
+      result = numOne + numTwo;
+      break;
+    case '-':
+      result = numOne - numTwo;
+      break;
+    case '*':
+      result = numOne * numTwo;
+      break;
+    case '/':
+      result = numOne / numTwo;
+      break;
+  }
+  calc.result = result; // add the result property into the calculation object
+  calculations.push(calc); 
+  
+}
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
