@@ -30,21 +30,25 @@ function renderDOM(calculations) {
 
 /** this function sets the calculation operator to '+' */
 function calcAdd(event) {
+    event.preventDefault()
   operator = "+";
 }
 
 /** this function sets the calculation operator to '-' */
 function calcSubtract(event) {
+    event.preventDefault()
   operator = "-";
 }
 
 /** this function sets the calculation operator to '*' */
 function calcMultiply(event) {
+    event.preventDefault()
   operator = "*";
 }
 
 /** this function sets the calculation operator to '*' */
 function calcDivide(event) {
+    event.preventDefault()
   operator = "/";
 }
 
@@ -53,6 +57,7 @@ function calcDivide(event) {
 //****************************** */
 /** this function generates the POST request to trigger the calculations on the server  */
 function calcEquals(event) {
+    event.preventDefault()
   //create data object
   numOne = document.getElementById("numOne").value;
   numTwo = document.getElementById("numTwo").value;
@@ -68,6 +73,7 @@ function calcEquals(event) {
 
 /** this function clears the inputs '+' */
 function calcClear(event) {
+    event.preventDefault()
     numOne = document.getElementById("numOne").value;
     numTwo = document.getElementById("numTwo").value;
 
