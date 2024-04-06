@@ -20,7 +20,9 @@ function renderDOM() {
   console.log(calculations);
   //display the result of the current function
   let recentResultLocation = document.getElementById("recentResult");
-  recentResultLocation.textContent = calculations.at(-1).result;
+  console.log(calculations[calculations.length - 1].result);
+  recentResultLocation.textContent =
+    calculations[calculations.length - 1].result;
   //display the history of the calculations
   let calcHistoryULlocation = document.getElementById("calcHistoryUL");
   for (let calc of calculations) {
@@ -110,7 +112,7 @@ function fetchCalcs() {
     url: "/calculations",
   }).then((res) => {
     let calculations = res.calculations;
-    console.log (res);
+    console.log(res);
     console.log(calculations);
     return calculations;
   });
