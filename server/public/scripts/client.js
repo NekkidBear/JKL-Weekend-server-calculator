@@ -21,7 +21,7 @@ function renderDOM() {
   //display the result of the current function
   let recentResultLocation = document.getElementById("recentResult");
   console.log(calculations[calculations.length - 1].result);
-  recentResultLocation.innerHTML.text =
+  recentResultLocation.innerText =
     calculations[calculations.length - 1].result;
   //display the history of the calculations
   let calcHistoryULlocation = document.getElementById("calcHistoryUL");
