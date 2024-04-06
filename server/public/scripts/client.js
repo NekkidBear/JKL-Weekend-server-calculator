@@ -16,7 +16,7 @@ async function renderDOM() {
 
   if (calculations.length > 0 && recentResultLocation) {
     console.log(calculations[calculations.length - 1].result);
-    recentResultLocation.innerText =
+    recentResultLocation.textContent =
       calculations[calculations.length - 1].result;
   }
 
