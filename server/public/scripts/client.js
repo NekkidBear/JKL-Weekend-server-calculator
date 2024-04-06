@@ -109,3 +109,5 @@ function fetchCalcs() {
     return calculations;
   });
 }
+
+onReady();
