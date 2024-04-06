@@ -100,14 +100,11 @@ function calcClear(event) {
     event.preventDefault();
   }
   console.log("clearing inputs");
+  numOneinput = document.getElementById("numOne");
+  numTwoinput= document.getElementById("numTwo");
 
-  //selecting the inputs in the DOM
-  let numOneinput = document.getElementById("numOne");
-  let numTwoinput= document.getElementById("numTwo");
-
-  //clearing the inputs
-  numOneinput.value = "";
-  numTwoinput.value = "";
+  numOne.value = "";
+  numTwo.value = "";
   operator = "";
 
   console.log("inputs are clear");
