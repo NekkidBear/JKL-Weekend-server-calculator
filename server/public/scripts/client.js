@@ -111,7 +111,6 @@ function fetchCalcs() {
     console.log(calculations)
     return calculations;
   });
-  renderDOM(calculations);
 }
 
 //on initial load
