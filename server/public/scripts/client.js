@@ -104,19 +104,33 @@ function calcClear(event) {
 }
 
 /** this function will fetch the new data and trigger a DOM refresh*/
-function fetchCalcs() {
-  console.log("fetching data");
-  // GET request
-  axios({
-    method: "GET",
-    url: "/calculations",
-  }).then((res) => {
-    let calculations = res.calculations;
-    console.log(res.data);
-    console.log(calculations);
-    return calculations;
-  });
-}
+// function fetchCalcs() {
+//   console.log("fetching data");
+//   // GET request
+//   axios({
+//     method: "GET",
+//     url: "/calculations",
+//   }).then((res) => {
+//     let calculations = res.calculations;
+//     console.log(res.data);
+//     console.log(calculations);
+//     return calculations;
+//   });
+// }
+
+async function fetchCalcs() {
+    try {
+      const response = await fetch('/calculations');
+      if (response.ok) {
+        const data = await response.json();
+        calculations = data; // Assign the fetched data directly to the calculations variable
+      } else {
+        console.error('Error fetching calculations:', response.status);
+      }
+    } catch (error) {
+      console.error('Error fetching calculations:', error);
+    }
+  }
 
 //on initial load
 window.onload = renderDOM();
