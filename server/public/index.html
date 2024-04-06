@@ -10,12 +10,12 @@
     <h1>Server-Side Calculator</h1>
 
     <form data-testid="calculator">
-      <input data-testid="numOne" placeholder="First Number">
+      <input data-testid="numOne" id="numOne" placeholder="First Number">
       <button onclick="calcAdd(event)">+</button>
       <button onclick="calcSubtract(event)">-</button>
       <button onclick="calcMultiply(event)">*</button>
       <button onclick="calcDivide(event)">/</button>
-      <input data-testid="numTwo" placeholder="Second Number">
+      <input data-testid="numTwo" id="numTwo" placeholder="Second Number">
       <button onclick="calcEquals(event)">=</button>
       <button onclick="calcClear(event)">C</button>
     </form>
